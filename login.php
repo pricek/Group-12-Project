@@ -1,25 +1,28 @@
-<?php include("header.php");?>
+<!DOCTYPE html>
+<?php
+include("pages.php");
+$currentpage="Login";
+?>
 
-<link rel="stylesheet" type="text/css" href="style.css">
+<html>
+	<head>
+		<title>Login</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+<body>
 
 <body>
 
-<nav>
-
-<a href="veiw-employees.php">List Employees</a>
-<a href="veiw-products.php">List Products</a>
-<a href="login.php">Log In</a>
-
-</nav>
-
 <?php
-    include 'connectvars.php'; 
+
+    include 'connectvars.php';
+    include 'header.php';
     $error = "";
-    
+
     $page = "signin";
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error = "Username or Password is incorrect";
-        
+
         $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         if (!$conn) {
             die('Could not connect: ' . mysql_error());
@@ -29,7 +32,7 @@
 	}
         $queryIn = "SELECT Salt FROM Employees WHERE username='$username' ";
         $resultIn = mysqli_query($conn, $queryIn);
-        
+
         if($row = mysqli_fetch_assoc($resultIn)) {
             $salt = $row['Salt'];
             $querySalt = "SELECT Username FROM Employees WHERE Username='$username' AND Password=MD5('$password$salt')";
@@ -54,7 +57,7 @@
 			?>
 
 				<h1>Log In</h1>
-                
+
                 <span class="error"><?php echo $error;?></span>
 
 				<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="inform">
@@ -64,13 +67,13 @@
 				<li><input type="submit">
 				</form>
 			<?php
-		} else if ($page == "success") 
+		} else if ($page == "success")
 		{
-            echo '<h2>Log in successful</h2>';		
+            echo '<h2>Log in successful</h2>';
 		}
 	?>
 </main>
 
 </body>
 
-<?php include("footer.php");?>
+</html>

@@ -1,30 +1,33 @@
-<?php include("header.php");?>
+<!DOCTYPE html>
+<?php
+include("pages.php");
+$currentpage="Login";
+?>
 
-<link rel="stylesheet" type="text/css" href="style.css">
+<html>
+	<head>
+		<title>Login</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+<body>
 
 <body>
 
-<nav>
-
-<a href="Sign-Up.php">Sign Up</a>
-<a href="veiw-employees.php">List Employees</a>
-<a href="login.php">Log In</a>
-
-</nav>
-
 <?php
-    include 'connectvars.php'; 
-	$page = "signup"; 
+
+    include 'connectvars.php';
+    include 'header.php';
+	$page = "signup";
 	$usernameError = $firstNameError = $lastNameError = $emailError = $passwordError = $ageError = "";
 	$username = $firstName = $lastName = $email = $password = $age = "";
 
 	if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	
+
         $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
         if (!$conn) {
             die('Could not connect: ' . mysql_error());
         }
-        
+
 		$page = "success";
 	  	if (empty($_POST["username"])) {
 	    	$usernameError = "Username is required";
@@ -32,14 +35,14 @@
 	  	} else {
 	    	$username = test_input($conn, $_POST["username"]);
 	  	}
-        
+
         $queryIn = "SELECT * FROM Users where username='$username' ";
         $resultIn = mysqli_query($conn, $queryIn);
 		if (mysqli_num_rows($resultIn)> 0) {
 			$usernameError = "That username is already taken";
             $page = "errors";
 		}
-        
+
 	  	if (empty($_POST["firstName"])) {
 	  		$firstNameError = "First name is required";
 	  		$page = "errors";
@@ -65,23 +68,23 @@
 	    	$eID = test_input($conn, $_POST["eID"]);
 	  	}
 	}
-    
-    if ($page == "success") 
+
+    if ($page == "success")
 	{
         $salt = generateRandomSalt();
-        
+
         $query = "INSERT INTO Employees (Username, FirstName, LastName, Password, EmployeeID, Salt) VALUES ('$username', '$firstName', '$lastName', MD5('$password$salt'), '$eID', '$salt')";
         if(!mysqli_query($conn, $query)){
 			echo "ERROR: Could not execute $query. " . mysqli_error($conn);
             $page = "errors";
-		}		
+		}
 	}
 
 	function test_input($conn2, $data) {
         $data = mysqli_real_escape_string($conn2, $data);
   		return $data;
 	}
-    
+
     function generateRandomSalt(){
         return base64_encode(mcrypt_create_iv(12, MCRYPT_DEV_URANDOM));
     }
@@ -115,13 +118,13 @@
 				<br>
 				<label class="error">*Required Field</label>
 			<?php
-		} else if ($page == "success") 
+		} else if ($page == "success")
 		{
-            echo '<h2>Sign up successful</h2> <p>Click <a href="Sign-Up.php">here</a> to return to sign up</p>';		
+            echo '<h2>Sign up successful</h2> <p>Click <a href="Sign-Up.php">here</a> to return to sign up</p>';
 		}
 	?>
 </main>
 
 </body>
 
-<?php include("footer.php");?>
+</html>
