@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 include("pages.php");
-$currentpage="View Employees";
+$currentpage="View Orders";
 ?>
 
 <html>
@@ -24,7 +24,7 @@ $currentpage="View Employees";
 	}
 // Retrieve name of table selected
 
-	$query = "SELECT E.Username, E.FirstName, E.LastName FROM Employees E";
+	$query = "SELECT O.OrderID, O.Date , O.DollarAmount, O.ShipToAddress, O.BuyerID FROM Orders O";
 
 	$result = mysqli_query($conn, $query);
 	if (!$result) {
@@ -32,7 +32,7 @@ $currentpage="View Employees";
 	}
 // get number of columns in table
 	$fields_num = mysqli_num_fields($result);
-	echo "<h1>List Employees:</h1>";
+	echo "<h1>List of Orders:</h1>";
 	echo "<table id='t01' border='1'><tr>";
 
 // printing table headers
