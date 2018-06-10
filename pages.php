@@ -8,7 +8,7 @@
 		"View Employees" => "view-employees.php",
 		"View Products" => "view-products.php",
 		"View Orders" => "view-orders.php",
-		"Distributors" => "distributors.php"
+		"Distributors" => "distributors.php?dID=-1"
 	);
 
 ?>
