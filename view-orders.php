@@ -21,6 +21,11 @@ if(!isset($_SESSION['logged_in_user']))
 
 <?php
 
+    function test_input($conn2, $data) {
+       $data = mysqli_real_escape_string($conn2, $data);
+       return $data;
+    }
+
     include 'connectvars.php';
     include 'header.php';
 
@@ -63,7 +68,9 @@ if(!isset($_SESSION['logged_in_user']))
 	if($_GET[orderID]!=-1)
 	{
 
-	   $query = "SELECT C.Quantity, C.UnitCost, P.Description FROM OrderContents C, Products P WHERE C.OrderID = '$_GET[orderID]' AND P.ProductID=C.ProductID";
+	   $curOID = test_input($conn, $_GET[orderID]);
+
+	   $query = "SELECT C.Quantity, C.UnitCost, P.Description FROM OrderContents C, Products P WHERE C.OrderID = '$curOID' AND P.ProductID=C.ProductID";
 
 	   $result = mysqli_query($conn, $query);
 	   if (!$result) {

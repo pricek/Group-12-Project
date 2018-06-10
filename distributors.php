@@ -19,6 +19,11 @@ if(!isset($_SESSION['logged_in_user']))
 
 <?php
 
+    function test_input($conn2, $data) {
+       $data = mysqli_real_escape_string($conn2, $data);
+       return $data;
+    }
+
     include 'connectvars.php';
     include 'header.php';
 
@@ -58,7 +63,9 @@ if(!isset($_SESSION['logged_in_user']))
 
 	if($_GET[dID]!=-1)
 	{
-	   $query = "SELECT P.Description FROM DistributorStock S, Products P WHERE S.DistributerID = '$_GET[dID]' AND P.ProductID = S.ProductID";
+	   $curDID = test_input($conn, $_GET[dID]);
+
+	   $query = "SELECT P.Description FROM DistributorStock S, Products P WHERE S.DistributerID = '$curDID' AND P.ProductID = S.ProductID";
 
 	   $result = mysqli_query($conn, $query);
 	   if (!$result) {

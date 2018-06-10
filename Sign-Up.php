@@ -80,11 +80,10 @@ session_start();
             $page = "errors";
 		}
 	}
-
-	function test_input($conn2, $data) {
-        $data = mysqli_real_escape_string($conn2, $data);
-  		return $data;
-	}
+    function test_input($conn2, $data) {
+       $data = mysqli_real_escape_string($conn2, $data);
+       return $data;
+    }
 
     function generateRandomSalt(){
         return base64_encode(mcrypt_create_iv(12, MCRYPT_DEV_URANDOM));
