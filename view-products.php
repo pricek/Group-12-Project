@@ -1,12 +1,17 @@
-<!DOCTYPE html>
 <?php
 include("pages.php");
 $currentpage="View Products";
+session_start();
+if(!isset($_SESSION['logged_in_user']))
+ {
+  header("location: login.php");
+ }
 ?>
+<!DOCTYPE html>
 
 <html>
 	<head>
-		<title>Login</title>
+		<title>View Products</title>
 		<link rel="stylesheet" href="style.css">
 	</head>
 <body>

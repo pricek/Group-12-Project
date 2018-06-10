@@ -1,12 +1,18 @@
-<!DOCTYPE html>
 <?php
 include("pages.php");
 $currentpage="View Employees";
+session_start();
+if(!isset($_SESSION['logged_in_user']))
+ {
+  header("location: login.php");
+ }
 ?>
+
+<!DOCTYPE html>
 
 <html>
 	<head>
-		<title>Login</title>
+		<title>View Employees</title>
 		<link rel="stylesheet" href="style.css">
 	</head>
 <body>

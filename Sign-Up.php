@@ -2,11 +2,12 @@
 <?php
 include("pages.php");
 $currentpage="Sign Up";
+session_start();
 ?>
 
 <html>
 	<head>
-		<title>Login</title>
+		<title>Sign-Up</title>
 		<link rel="stylesheet" href="style.css">
 	</head>
 <body>

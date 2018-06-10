@@ -1,9 +1,11 @@
-<!DOCTYPE html>
 <?php
-include("pages.php");
-$currentpage="Log In";
+	ob_start();
+	include("pages.php");
+	$currentpage="Log In";
+	session_start();
 ?>
 
+<!DOCTYPE html>
 <html>
 	<head>
 		<title>Login</title>
@@ -26,7 +28,7 @@ $currentpage="Log In";
             die('Could not connect: ' . mysql_error());
         }
         $username = test_input($conn, $_POST["username"]);
-	  	$password = test_input($conn, $_POST["password"]);
+	  		$password = test_input($conn, $_POST["password"]);
 	}
         $queryIn = "SELECT Salt FROM Employees WHERE username='$username' ";
         $resultIn = mysqli_query($conn, $queryIn);
@@ -39,6 +41,12 @@ $currentpage="Log In";
                 $page = "success";
             }
         }
+
+				// if($page == "success"){
+				// 	session_register("username");
+				// 	$_SESSION['logged_in_user'] = $username;
+				// 	header("location: welcome.php");
+				// }
 
 	function test_input($conn2, $data) {
         $data = mysqli_real_escape_string($conn2, $data);
@@ -67,7 +75,11 @@ $currentpage="Log In";
 			<?php
 		} else if ($page == "success")
 		{
-            echo '<h2>Log in successful</h2>';
+						$_SESSION['logged_in_user'] = $username;
+						header("Refresh:3");
+						// echo '<h2>Log in successful</h2>';
+						//header("location: welcome.php");
+						echo "Welcome back " . $_SESSION['logged_in_user'] . "! Logging you in...";
 		}
 	?>
 </main>
