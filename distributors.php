@@ -5,7 +5,10 @@ session_start();
 
 if(!isset($_SESSION['logged_in_user']))
  {
-  header("location: login.php");
+     echo '<script type="text/javascript">;
+     alert("Please login before attempting access. Redirecting...");
+     window.location = "http://web.engr.oregonstate.edu/~andrekyl/cs340/final/Group-12-Project/login.php";
+     </script>';
  }
 ?>
 
