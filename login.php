@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 include("pages.php");
-$currentpage="Login";
+$currentpage="Log In";
 ?>
 
 <html>
@@ -9,8 +9,6 @@ $currentpage="Login";
 		<title>Login</title>
 		<link rel="stylesheet" href="style.css">
 	</head>
-<body>
-
 <body>
 
 <?php

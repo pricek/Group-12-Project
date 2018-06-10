@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <?php
 include("pages.php");
-$currentpage="Login";
+$currentpage="View Products";
 ?>
 
 <html>
