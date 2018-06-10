@@ -1,16 +1,20 @@
-<!DOCTYPE html>
 <?php
 include("pages.php");
 $currentpage="Distributors";
+session_start();
+
+if(!isset($_SESSION['logged_in_user']))
+ {
+  header("location: login.php");
+ }
 ?>
 
+<!DOCTYPE html>
 <html>
 	<head>
-		<title>Login</title>
+		<title>Distributors</title>
 		<link rel="stylesheet" href="style.css">
 	</head>
-<body>
-
 <body>
 
 <?php

@@ -4,6 +4,7 @@
 		"Home" => "home.php",
 		"Sign Up" => "Sign-Up.php",
 		"Log In" => "login.php",
+		"Logout" => "logout.php",
 		"View Employees" => "view-employees.php",
 		"View Products" => "view-products.php",
 		"View Orders" => "view-orders.php",

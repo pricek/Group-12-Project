@@ -1,7 +1,7 @@
 
 
 	<header>
-		Wholesale Management <span id="username"><?php echo $user;?></span>
+		Wholesale Management - <span id="username"> <b> <?php echo $_SESSION['logged_in_user'];?> </b></span>
 	</header>
 	<nav>
 		<ul>
