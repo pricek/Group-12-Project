@@ -1,9 +1,18 @@
-<!DOCTYPE html>
 <?php
 include("pages.php");
 $currentpage="Sign Up";
 session_start();
+
+if($_SESSION['logged_in_user'] != "admin")
+ {
+ 	     echo '<script type="text/javascript">;
+ 	     alert("Please login as Admin before attempting access. Redirecting...");
+ 	     window.location = "http://web.engr.oregonstate.edu/~andrekyl/cs340/final/Group-12-Project/login.php";
+ 	     </script>';
+ }
 ?>
+
+<!DOCTYPE html>
 
 <html>
 	<head>
@@ -99,7 +108,7 @@ session_start();
 		{
 			?>
 
-				<h1>Sign Up</h1>
+				<h1>Sign Up an Employee</h1>
 
 				<form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="inform">
 				<ul>
