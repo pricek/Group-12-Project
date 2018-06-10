@@ -7,7 +7,7 @@
 		"Logout" => "logout.php",
 		"View Employees" => "view-employees.php",
 		"View Products" => "view-products.php",
-		"View Orders" => "view-orders.php",
+		"View Orders" => "view-orders.php?orderID=-1",
 		"Distributors" => "distributors.php?dID=-1"
 	);
 
