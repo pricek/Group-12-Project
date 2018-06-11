@@ -24,6 +24,16 @@ header em {
 	font-size: 0.75em
 }
 
+.homepage {
+    text-align:center;
+}
+
+.office {
+    display: block;
+    width: 500px;
+    height: auto;
+    margin:auto;
+}
 
 html {
 	background-color: light gray;
