@@ -118,7 +118,7 @@ if(!isset($_SESSION['logged_in_user']))
      }
      echo "</table>";
      echo "<br><form method=\"post\" action=\"buyers.php?bID=$_GET[bID]\" class=\"inform\">";
-     echo "<ul><li><label>Address:</lebel> <input name=\"address\" type=\"text\"></li>";
+     echo "<ul><li><label>Address:</label> <input name=\"address\" type=\"text\"></li>";
      echo "<li><input name=\"submit\" value=\"Add_Order\" type=\"submit\"></li>";
      echo "</form>";
   }
