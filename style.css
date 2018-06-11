@@ -285,6 +285,7 @@ table#t01 th {
 #t01  tr:hover {
   background-color: orange;
   color: orange;
+	cursor: pointer;
 }
 caption {
   font-weight: bold;
