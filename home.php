@@ -15,11 +15,15 @@ session_start();
 			<link rel="stylesheet" href="style.css">
 		</head>
 	<body>
+<div class="homepage">
+  <h2> Welcome to the Group 12 Wholesale Warehouse Database</h2>
 
-  <p> Interesting Information </p>
-
-  <img src="warehouse.jpg" alt="Warehouse">
-
+  <img src="warehouse.jpg" alt="Warehouse" class="office">
+    
+    <p> A picture of our lovely building, located in Scranton, PA </p>    
+    
+    <p> *Employees please proceed to the Log In page, if you need to create an account please speak with an Admin.</p>
+</div>
 </body>
 
 </html>
