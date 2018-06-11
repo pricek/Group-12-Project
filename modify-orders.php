@@ -1,6 +1,6 @@
 <?php
 include("pages.php");
-$currentpage="View Orders";
+$currentpage="Modify Orders";
 session_start();
 
 if(!isset($_SESSION['logged_in_user']))
@@ -38,8 +38,10 @@ if(!isset($_SESSION['logged_in_user']))
 		die('Could not connect: ' . mysql_error());
 	}
 // Retrieve name of table selected
+	
+	$curOID = test_input($conn, $_GET[orderID]);
 
-	$query = "SELECT O.OrderID, O.Date , O.DollarAmount, O.ShipToAddress, O.BuyerID FROM Orders O";
+	$query = "SELECT C.Quantity, C.UnitCost, P.Description FROM OrderContents C, Products P WHERE C.OrderID = '$curOID' AND P.ProductID=C.ProductID";
 
 	$result = mysqli_query($conn, $query);
 	if (!$result) {
@@ -47,7 +49,7 @@ if(!isset($_SESSION['logged_in_user']))
 	}
 // get number of columns in table
 	$fields_num = mysqli_num_fields($result);
-	echo "<h1>List of Orders:</h1>";
+	echo "<h1>Order $_GET[orderID]:</h1>";
 	echo "<table id='t01' border='1'><tr>";
 
 // printing table headers
@@ -57,7 +59,7 @@ if(!isset($_SESSION['logged_in_user']))
 	}
 	echo "</tr>\n";
 	while($row = mysqli_fetch_row($result)) {
-		echo "<tr onclick=\"location.href='view-orders.php?orderID=$row[0]'\">";
+		echo "<tr>";
 		// $row is array... foreach( .. ) puts every element
 		// of $row to $cell variable
 		foreach($row as $cell)
@@ -68,7 +70,7 @@ if(!isset($_SESSION['logged_in_user']))
 	
 	mysqli_free_result($result);
 
-	if($_GET[orderID]!=-1)
+	if(false)
 	{
 
 	   $curOID = test_input($conn, $_GET[orderID]);
